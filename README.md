@@ -148,5 +148,4 @@ Toutes contributions sont les bienvenues.
 
 ---
 
-# Licence
-Licence à définir (MIT recommandé).
+
