@@ -1,4 +1,4 @@
-# Orchestrateur – Installation & Démarrage
+# Orchestrateur – Installation et Démarrage
 
 Orchestrateur est une application composée d’un backend FastAPI et d’un frontend React/Tailwind CSS permettant de gérer des hyperviseurs et leurs machines virtuelles.
 
@@ -19,24 +19,24 @@ Avant d’installer le projet, assure-toi d’avoir :
 | npm | 9+ | Gestionnaire de dépendances JS |
 | Git | optionnel | Pour cloner et gérer le projet |
 
-## Dépendances principales
-- FastAPI
-- Uvicorn
-- React
-- Tailwind CSS
+## Dépendances Python principales
+- fastapi
+- uvicorn
+- sqlalchemy
+- pydantic
+- libvirt-python
+- python-multipart (obligatoire)
 
 ---
 
 # 2. Installation du projet
-
-Télécharge le ZIP ou clone le dépôt :
 
 ```bash
 git clone https://github.com/Darouichay/orchestrateur.git
 cd orchestrateur
 ```
 
-Structure du projet :
+Structure :
 
 ```
 orchestrateur/
@@ -48,76 +48,80 @@ orchestrateur/
 
 # 3. Installation et lancement du Backend (FastAPI)
 
-## Aller dans le dossier backend
+## 3.1 Créer un environnement virtuel
+
 ```bash
 cd backend
+python3 -m venv venv
 ```
 
-## Installer les dépendances Python
+Activer l’environnement :
+
+```bash
+source venv/bin/activate
+```
+
+## 3.2 Installer les dépendances
+
 ```bash
 pip install -r requirements.txt
+pip install python-multipart
 ```
 
-## Lancer le serveur FastAPI
+## 3.3 Lancer le serveur
+
 ```bash
 uvicorn main:app --reload
 ```
 
-## Accéder à l’API
-- API : http://localhost:8000
-- Documentation interactive : http://localhost:8000/docs
+Accès API :
+- http://localhost:8000
+- http://localhost:8000/docs
 
 ---
 
-# 4. Installation et lancement du Frontend (React)
+# 4. Installation et lancement du Frontend
 
-## Aller dans le dossier frontend
 ```bash
 cd frontend
-```
-
-## Installer les dépendances JS
-```bash
 npm install
-```
-
-## Lancer le serveur React
-```bash
 npm start
 ```
 
-## Accéder à l’interface web
+Accès :
 http://localhost:3000/
 
 ---
 
-# 5. Configuration de l’API côté front
+# 5. Configuration du frontend
 
-Le fichier suivant contient l’URL du backend :
+Modifier l’URL de l’API si nécessaire :
 
 ```
 frontend/src/services/api.js
 ```
 
-Exemple :
 ```js
 export const API_URL = "http://localhost:8000";
 ```
 
-Modifie-le si tu utilises un serveur distant ou Docker.
-
 ---
 
-# 6. Résumé rapide (cheat-sheet)
+# 6. Résumé rapide
 
-## Backend :
+## Backend
+
 ```bash
 cd backend
+python3 -m venv venv
+source venv/bin/activate
 pip install -r requirements.txt
+pip install python-multipart
 uvicorn main:app --reload
 ```
 
-## Frontend :
+## Frontend
+
 ```bash
 cd frontend
 npm install
@@ -126,26 +130,20 @@ npm start
 
 ---
 
-# 7. Dépendances détaillées (optionnel)
+# 7. Dépendances détaillées
 
-## Backend (FastAPI)
+## Backend
 - fastapi
 - uvicorn
+- sqlalchemy
 - pydantic
-- requests (si utilisé)
+- libvirt-python
+- python-multipart
 
-## Frontend (React)
+## Frontend
 - react
 - axios
 - tailwindcss
 - react-router-dom
 
 ---
-
-# Contributions
-Fork → modifications → pull request.
-Toutes contributions sont les bienvenues.
-
----
-
-
